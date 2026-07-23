@@ -1,342 +1,670 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
 
-margin:0;
+    margin: 0;
 
-min-height:100vh;
+    min-height: 100vh;
 
-background:
-linear-gradient(
-rgba(255,250,240,.95),
-rgba(245,236,220,.95)
-);
+    background:
+    radial-gradient(circle at top,
+    #fff8ed,
+    #efe6d5);
 
-font-family:
-"Georgia",
-serif;
+    color: #4f5f49;
 
-color:#52634d;
+    font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
 
-}
-
-
-.container {
-
-min-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
+    overflow-x:hidden;
 
 }
 
 
-.scene {
+/* BACKGROUND GARDEN EFFECT */
 
-display:none;
+.garden-background {
 
-text-align:center;
+    position:fixed;
 
-padding:30px;
+    inset:0;
 
-width:100%;
+    overflow:hidden;
+
+    pointer-events:none;
+
+}
+
+
+.garden-background:before {
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    radial-gradient(
+    circle at 20% 20%,
+    rgba(210,170,100,.15),
+    transparent 30%
+    );
 
 }
 
 
-.scene.active {
+/* PETALS */
 
-display:block;
+
+.petal {
+
+    position:absolute;
+
+    width:18px;
+
+    height:18px;
+
+    background:#e8b7b0;
+
+    border-radius:
+    100% 0 100% 0;
+
+    opacity:.6;
+
+    animation:
+    floatPetal 12s infinite;
 
 }
 
+
+.petal1 {
+
+    left:15%;
+    top:20%;
+
+}
+
+
+.petal2 {
+
+    left:70%;
+    top:30%;
+
+    animation-delay:4s;
+
+}
+
+
+.petal3 {
+
+    left:40%;
+    top:70%;
+
+    animation-delay:7s;
+
+}
+
+
+
+@keyframes floatPetal {
+
+    0% {
+
+        transform:
+        translateY(0)
+        rotate(0deg);
+
+    }
+
+
+    50% {
+
+        transform:
+        translateY(-80px)
+        rotate(180deg);
+
+    }
+
+
+    100% {
+
+        transform:
+        translateY(0)
+        rotate(360deg);
+
+    }
+
+}
+
+
+
+/* MAIN */
+
+
+.wrapper {
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+.screen {
+
+    display:none;
+
+    width:100%;
+
+    max-width:600px;
+
+    text-align:center;
+
+    padding:30px;
+
+}
+
+
+.screen.active {
+
+    display:block;
+
+}
+
+
+
+
+
+/* INTRO */
+
+
+.intro {
+
+    font-size:28px;
+
+    color:#8b6755;
+
+    letter-spacing:1px;
+
+}
+
+
+
+
+
+/* ENVELOPE */
 
 
 .envelope {
 
-width:300px;
+    width:330px;
 
-height:190px;
+    height:220px;
 
-margin:auto;
+    margin:
+    40px auto;
 
-background:#fffaf0;
+    position:relative;
 
-border:2px solid #d4af6a;
+    cursor:pointer;
 
-position:relative;
-
-cursor:pointer;
-
-box-shadow:
-0 20px 50px rgba(0,0,0,.15);
-
-transition:1s;
-
-animation:
-float 3s infinite;
+    perspective:1000px;
 
 }
 
 
 
-.envelope-text {
+.envelope-back {
 
-position:absolute;
+    position:absolute;
 
-width:100%;
+    inset:0;
 
-height:100%;
+    background:
 
-display:flex;
+    linear-gradient(
+    145deg,
+    #fffaf0,
+    #eee1cc
+    );
 
-flex-direction:column;
+    border:
 
-justify-content:center;
+    1px solid #d5b26a;
 
-align-items:center;
+    box-shadow:
 
-}
-
-
-
-.envelope-text h2 {
-
-color:#8b5555;
+    0 25px 60px rgba(0,0,0,.15);
 
 }
 
 
 
-.flap {
-
-position:absolute;
-
-width:100%;
-
-height:50%;
-
-background:#f4ead8;
-
-clip-path:
-polygon(0 0,100% 0,50% 100%);
-
-transform-origin:top;
-
-transition:1s;
-
-}
 
 
+/* LETTER */
 
-.seal {
 
-position:absolute;
+.letter {
 
-z-index:3;
+    position:absolute;
 
-left:50%;
+    left:20px;
 
-top:50%;
+    right:20px;
 
-transform:
-translate(-50%,-50%);
+    top:25px;
 
-background:#9c5b60;
+    height:230px;
 
-color:white;
+    background:#fffaf5;
 
-height:65px;
+    border:
 
-width:65px;
+    1px solid #d6b66d;
 
-border-radius:50%;
+    padding:25px;
 
-display:flex;
+    z-index:1;
 
-align-items:center;
+    transform:
+    translateY(80px);
 
-justify-content:center;
+    transition:
+    1.5s ease;
 
-font-size:14px;
-
-box-shadow:
-0 5px 15px rgba(0,0,0,.25);
+    opacity:0;
 
 }
 
 
 
-.open .flap {
+.letter h1 {
 
-transform:
-rotateX(180deg);
+    margin:5px;
+
+    color:#855458;
+
+    font-size:34px;
+
+}
+
+
+.letter h2 {
+
+    color:#c39a4b;
 
 }
 
 
 
-.message {
+/* FRONT */
 
-margin-top:40px;
 
-font-size:24px;
+.envelope-front {
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+    145deg,
+    #f8eddb,
+    #ead7bc
+    );
+
+    clip-path:
+    polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    50% 55%,
+    0 100%
+    );
+
+    z-index:3;
 
 }
+
+
+
+/* WAX SEAL */
+
+
+.wax-seal {
+
+    position:absolute;
+
+    z-index:5;
+
+    left:50%;
+
+    top:55%;
+
+    transform:
+    translate(-50%,-50%);
+
+
+    height:78px;
+
+    width:78px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(
+    circle,
+    #a85c61,
+    #753b42
+    );
+
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:16px;
+
+    box-shadow:
+
+    0 10px 25px rgba(0,0,0,.25);
+
+}
+
+
+
+
+
+/* OPEN STATE */
+
+
+.open .wax-seal {
+
+    animation:
+    sealBreak .8s forwards;
+
+}
+
+
+.open .letter {
+
+    transform:
+    translateY(-60px);
+
+    opacity:1;
+
+}
+
+
+.open .envelope-front {
+
+    transform:
+    rotateX(180deg);
+
+}
+
+
+
+@keyframes sealBreak {
+
+    to {
+
+        transform:
+        translate(-50%,-50%)
+        scale(.2);
+
+        opacity:0;
+
+    }
+
+}
+
+
 
 
 
 .tap {
 
-font-style:italic;
+    color:#8b6755;
+
+    font-style:italic;
 
 }
 
 
 
-.card {
 
-background:#fffaf2;
 
-max-width:420px;
+/* INVITATION CARD */
 
-margin:auto;
 
-padding:40px 25px;
+.invitation-card {
 
-border:
+    background:#fffaf3;
 
-1px solid #d4af6a;
+    padding:45px 30px;
 
-box-shadow:
+    border:
 
-0 20px 50px rgba(0,0,0,.15);
+    1px solid #d4b36a;
+
+    box-shadow:
+
+    0 25px 70px rgba(0,0,0,.15);
+
+
+    position:relative;
+
+}
+
+
+
+.invitation-card:before {
+
+    content:"";
+
+    position:absolute;
+
+    inset:15px;
+
+    border:
+
+    1px solid rgba(195,154,75,.4);
 
 }
 
 
 
-.card h1 {
+.invitation-card h1 {
 
-font-size:38px;
+    font-size:44px;
 
-color:#8b5555;
-
-margin:10px;
+    color:#855458;
 
 }
-
 
 
 .amp {
 
-font-size:30px;
+    font-size:35px;
 
-color:#caa24d;
+    color:#c39a4b;
+
+}
+
+
+.divider {
+
+    height:1px;
+
+    background:#d4b36a;
+
+    margin:30px;
 
 }
 
 
 
-.card h2 {
 
-color:#caa24d;
-
-}
-
+/* COUNTDOWN */
 
 
 .countdown {
 
-margin:30px;
+    margin:40px 0;
+
+}
+
+
+.countdown p {
+
+    font-size:22px;
+
+}
+
+
+.time {
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
 
 }
 
 
 
-.numbers {
+.time div {
 
-display:flex;
+    background:#e6eadb;
 
-justify-content:center;
+    padding:12px;
 
-gap:15px;
-
-}
-
-
-
-.numbers div {
-
-background:#e6eadc;
-
-padding:12px;
-
-border-radius:10px;
-
-min-width:60px;
+    border-radius:8px;
 
 }
 
 
 
-.numbers span {
+.time strong {
 
-font-size:25px;
+    display:block;
 
-font-weight:bold;
-
-}
-
-
-
-.video-placeholder {
-
-height:180px;
-
-max-width:420px;
-
-margin:25px auto;
-
-background:#dfe6d5;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-style:italic;
+    font-size:25px;
 
 }
 
 
 
-.button {
+.time span {
 
-display:inline-block;
-
-background:#caa24d;
-
-color:white;
-
-padding:16px 30px;
-
-border-radius:40px;
-
-text-decoration:none;
+    font-size:12px;
 
 }
 
 
 
-@keyframes float {
 
-50% {
 
-transform:
-translateY(-10px);
+/* VIDEO */
+
+
+.video-frame {
+
+    height:200px;
+
+    background:
+
+    #dfe5d4;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin:30px 0;
+
+    border-radius:12px;
+
+    font-style:italic;
+
+}
+
+
+
+
+
+/* BUTTON */
+
+
+.website-button {
+
+    display:inline-block;
+
+    background:
+
+    linear-gradient(
+    90deg,
+    #c49a4b,
+    #dfc078
+    );
+
+
+    color:white;
+
+    padding:
+
+    16px 35px;
+
+
+    border-radius:40px;
+
+    text-decoration:none;
+
+    letter-spacing:1px;
+
+}
+
+
+
+@media(max-width:500px){
+
+
+.envelope {
+
+    width:290px;
+
+}
+
+
+.invitation-card h1 {
+
+    font-size:36px;
+
+}
+
+
+.time {
+
+    gap:5px;
 
 }
 
