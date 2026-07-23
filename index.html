@@ -11,49 +11,87 @@
 
 <body>
 
-<div class="petals"></div>
+<div class="garden-background">
+    <div class="petal petal1"></div>
+    <div class="petal petal2"></div>
+    <div class="petal petal3"></div>
+</div>
 
-<div class="container">
 
-<!-- OPENING SCENE -->
+<main class="wrapper">
 
-<section id="opening" class="scene active">
+
+<!-- OPENING ENVELOPE -->
+
+<section id="opening" class="screen active">
+
+    <p class="intro">
+        A special delivery awaits...
+    </p>
+
 
     <div id="envelope" class="envelope">
 
-        <div class="flap"></div>
+        <div class="envelope-back"></div>
 
-        <div class="seal">
-            K<br>
-            &<br>
-            D
+        <div class="letter">
+            <p>Together with their families</p>
+
+            <h1>Krupa Patel</h1>
+
+            <span>&</span>
+
+            <h1>Dhruv Patel</h1>
+
+            <p>
+                Save the Date
+            </p>
+
+            <h2>
+                May 28–29, 2027
+            </h2>
+
+            <p>
+                Chicago, Illinois
+            </p>
+
         </div>
 
-        <div class="envelope-text">
-            <p>With Love,</p>
-            <h2>Krupa & Dhruv</h2>
+
+        <div class="envelope-front"></div>
+
+
+        <div class="wax-seal">
+
+            <span>
+                K<br>&<br>D
+            </span>
+
         </div>
+
 
     </div>
 
-
-    <p class="message">
-        A special delivery awaits...
-    </p>
 
     <p class="tap">
         Tap to open
     </p>
 
+
 </section>
 
 
-<!-- INVITATION SCENE -->
-
-<section id="invitation" class="scene">
 
 
-<div class="card">
+
+<!-- INVITATION REVEAL -->
+
+
+<section id="reveal" class="screen">
+
+
+<div class="invitation-card">
+
 
 <p>
 Together with their families
@@ -64,9 +102,11 @@ Together with their families
 Krupa Patel
 </h1>
 
+
 <div class="amp">
 &
 </div>
+
 
 <h1>
 Dhruv Patel
@@ -78,6 +118,9 @@ request the pleasure of your company
 <br>
 as they celebrate their wedding
 </p>
+
+
+<div class="divider"></div>
 
 
 <h2>
@@ -99,41 +142,49 @@ Chicago, Illinois
 
 
 
+
 <div class="countdown">
 
-<h3>
-Counting down to forever
-</h3>
+<p>
+The countdown begins
+</p>
 
-<div class="numbers">
 
-<div>
-<span id="days">0</span>
-<p>Days</p>
-</div>
+<div class="time">
 
 <div>
-<span id="hours">0</span>
-<p>Hours</p>
+<strong id="days">0</strong>
+<span>Days</span>
 </div>
+
 
 <div>
-<span id="minutes">0</span>
-<p>Minutes</p>
+<strong id="hours">0</strong>
+<span>Hours</span>
 </div>
+
 
 <div>
-<span id="seconds">0</span>
-<p>Seconds</p>
+<strong id="minutes">0</strong>
+<span>Minutes</span>
+</div>
+
+
+<div>
+<strong id="seconds">0</strong>
+<span>Seconds</span>
+</div>
+
+
 </div>
 
 </div>
 
-</div>
 
 
 
-<div class="video-placeholder">
+
+<div class="video-frame">
 
 <p>
 Our story begins here...
@@ -143,22 +194,25 @@ Our story begins here...
 
 
 
-<a class="button"
-href="https://withjoy.com/dhruv-and-krupa">
 
-Enter Wedding Website
+
+<a 
+href="https://withjoy.com/dhruv-and-krupa"
+class="website-button">
+
+✨ Enter Wedding Website ✨
 
 </a>
-
 
 
 </section>
 
 
-</div>
+</main>
 
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
