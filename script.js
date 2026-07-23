@@ -1,32 +1,42 @@
-const envelope =
-document.getElementById("envelope");
+// ELEMENTS
+
+const envelope = document.getElementById("envelope");
+
+const opening = document.getElementById("opening");
+
+const reveal = document.getElementById("reveal");
 
 
-const opening =
-document.getElementById("opening");
+// ENVELOPE OPENING
+
+envelope.addEventListener("click", () => {
 
 
-const invitation =
-document.getElementById("invitation");
+    envelope.classList.add("open");
+
+
+    // wait for envelope animation
+
+    setTimeout(() => {
+
+
+        opening.classList.remove("active");
+
+
+        reveal.classList.add("active");
+
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+
+    },1800);
 
 
 
-envelope.onclick = function(){
-
-envelope.classList.add("open");
-
-
-setTimeout(()=>{
-
-opening.classList.remove("active");
-
-invitation.classList.add("active");
-
-
-},1200);
-
-
-};
+});
 
 
 
@@ -41,65 +51,91 @@ new Date("May 28, 2027 00:00:00").getTime();
 function updateCountdown(){
 
 
-const now =
-new Date().getTime();
-
-
-const difference =
-weddingDate-now;
+    const now =
+    new Date().getTime();
 
 
 
-const days =
-Math.floor(
-difference /
-(1000*60*60*24)
-);
-
-
-const hours =
-Math.floor(
-(difference %
-(1000*60*60*24))
-/
-(1000*60*60)
-);
+    const difference =
+    weddingDate - now;
 
 
 
-const minutes =
-Math.floor(
-(difference %
-(1000*60*60))
-/
-(1000*60)
-);
+    if(difference < 0){
+
+        document.getElementById("days").innerHTML="0";
+        document.getElementById("hours").innerHTML="0";
+        document.getElementById("minutes").innerHTML="0";
+        document.getElementById("seconds").innerHTML="0";
+
+        return;
+
+    }
 
 
 
-const seconds =
-Math.floor(
-(difference %
-(1000*60))
-/
-1000
-);
+    const days =
+    Math.floor(
+        difference /
+        (1000*60*60*24)
+    );
 
 
 
-document.getElementById("days").innerHTML=days;
+    const hours =
+    Math.floor(
+        (difference %
+        (1000*60*60*24))
+        /
+        (1000*60*60)
+    );
 
-document.getElementById("hours").innerHTML=hours;
 
-document.getElementById("minutes").innerHTML=minutes;
 
-document.getElementById("seconds").innerHTML=seconds;
+    const minutes =
+    Math.floor(
+        (difference %
+        (1000*60*60))
+        /
+        (1000*60)
+    );
+
+
+
+    const seconds =
+    Math.floor(
+        (difference %
+        (1000*60))
+        /
+        1000
+    );
+
+
+
+    document.getElementById("days").innerHTML =
+    days;
+
+
+    document.getElementById("hours").innerHTML =
+    hours;
+
+
+    document.getElementById("minutes").innerHTML =
+    minutes;
+
+
+    document.getElementById("seconds").innerHTML =
+    seconds;
 
 
 }
 
 
 
-setInterval(updateCountdown,1000);
-
 updateCountdown();
+
+
+setInterval(
+    updateCountdown,
+    1000
+);
